@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use('/', ()=> {
+app.use('/', (req,res)=> {
   res.send('Ok MF✌️')
 })
 //delete book
@@ -37,7 +37,7 @@ app.use("/api/returnbook", returnbookRoute);
 
 //connect to mongodb & listen for requests
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.DB_URI)
   .then(() => {
     app.listen(process.env.PORT, () => {
       console.log("connected to db... & listenning on port", process.env.PORT);
